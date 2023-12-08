@@ -9,6 +9,24 @@ $(document).ready(function () {
     });
   }
 
+  $( ".card-item" ).on('mousemove',function (e) {
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+    
+    $(this).find('.bg-texture').css({
+      transform:'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)'
+
+    })
+  });
+
+  $( ".card-item" ).on('mouseout',function (e) {
+
+    $(this).find('.bg-texture').css({
+      transform:'translate(0)'
+
+    })
+  });
+
   if ($('main').hasClass('hero-page')) {
     $('.page-header').addClass('big-logo');
   } else {
