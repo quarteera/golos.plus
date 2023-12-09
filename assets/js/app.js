@@ -12,11 +12,32 @@ $(document).ready(function () {
   $( ".card-item" ).on('mousemove',function (e) {
     let x = e.clientX / window.innerWidth;
     let y = e.clientY / window.innerHeight;
-    
+
     $(this).find('.bg-texture').css({
       transform:'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)'
 
     })
+  });
+
+  $("a.scrollto").click(function() {
+    var elementClick = $(this).attr("href")
+    var destination = $(elementClick).offset().top - 90;
+    jQuery("html:not(:animated),body:not(:animated)").animate({
+      scrollTop: destination
+    }, 800);
+    return false;
+  });
+  $('.menu-burger').on('click',function () {
+    $(this).toggleClass('active')
+    $('.header-panel').toggleClass('active')
+    $('body').toggleClass('overflow-hidden');
+    $('.page-header').removeClass('big-logo')
+  });
+
+  $('.header-panel').on('click', 'a', function () {
+    $('.menu-burger').removeClass('active')
+    $('.header-panel').removeClass('active')
+    $('body').removeClass('overflow-hidden');
   });
 
   $( ".card-item" ).on('mouseout',function (e) {
